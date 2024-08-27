@@ -32,17 +32,15 @@ from django.views import generic
 
 class BookListView(generic.ListView):
     model = Book
+    paginate_by = 10
 
-    context_object_name = 'book_list'
-    queryset = Book.objects.filter(title__icontains='the')[:5]
-    book_list_template = 'catalog/book_list.html'
+    # Only for reference:
+    # context_object_name = 'book_list'
+    # book_list_template = 'books/book_list.html'
 
-    def get_queryset(self) -> QuerySet[Any]:
-        return Book.objects.filter(title__icontains='war')[:5]
+    # def get_context_data(self, **kwargs):
+    #     context = super(BookListView, self).get_context_data(**kwargs)
+    #     return context
 
-    def get_context_data(self, **kwargs):
-        context = super(BookListView, self).get_context_data(**kwargs)
-
-        # Create any data and add it to the context
-        # context['some_data'] = 'This is just some data'
-        return context
+class BookDetailView(generic.DetailView):
+    model = Book
