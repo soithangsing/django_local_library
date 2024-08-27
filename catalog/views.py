@@ -1,3 +1,5 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render
 
 # Create your views here.
@@ -25,3 +27,22 @@ def index(request):
     }
 
     return render(request,'index.html',context=context)
+
+from django.views import generic
+
+class BookListView(generic.ListView):
+    model = Book
+
+    context_object_name = 'book_list'
+    queryset = Book.objects.filter(title__icontains='the')[:5]
+    book_list_template = 'catalog/book_list.html'
+
+    def get_queryset(self) -> QuerySet[Any]:
+        return Book.objects.filter(title__icontains='war')[:5]
+
+    def get_context_data(self, **kwargs):
+        context = super(BookListView, self).get_context_data(**kwargs)
+
+        # Create any data and add it to the context
+        # context['some_data'] = 'This is just some data'
+        return context
