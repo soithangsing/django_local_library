@@ -1,4 +1,10 @@
 # django_local_library
 Local Library website written in Django
 
-Bookmark -> Django Tutorial Part 7: Sessions framework
+[Bookmark](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Authentication#password_reset_templates)
+
+test-user
+password123$
+
+user-librarian
+5krB&VrFw2qo^xyb
