@@ -3,6 +3,8 @@ from django.urls import reverse
 from django.db.models import UniqueConstraint
 from django.db.models.functions import Lower
 from django.conf import settings
+from datetime import date
+
 # Create your models here.
 
 class Genre(models.Model):
@@ -99,6 +101,11 @@ class BookInstance(models.Model):
 
     def __str__(self):
         return f'{self.id} ({self.book.title})'
+    
+    @property
+    def is_overdue(self):
+        # Determines if the book is overdue based on due date and current date.
+        return bool(self.due_back and date.today() > self.due_back)
     
 class Author(models.Model):
     first_name = models.CharField(max_length=100)

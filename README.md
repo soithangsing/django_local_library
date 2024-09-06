@@ -1,7 +1,7 @@
-# django_local_library
+# Django Local Library
 Local Library website written in Django
 
-[Bookmark](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Authentication#example_%E2%80%94_listing_the_current_users_books)
+[Bookmark](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Authentication#permissions)
 
 Exact point: from datetime import date
 
